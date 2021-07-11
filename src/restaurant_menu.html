@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <script src="menu.js" type="text/javascript"></script>
+    <title> Menu carbon y nieve</title>
+</head>
+<body>
+    <header>
+        <img id="logo" src="../imagenes/cyn-logo.png" alt="Logo Cabon y nieve">
+    </header>
+    <div>
+        <button id="abrir_pedido"  onclick="abrirPedido(true)"> Mostrar pedido</button>
+    </div>
+    <aside id="aside">
+        <h2>Su pedido</h2>
+        <button onclick="abrirPedido(false)"> Cerrar </button>
+        <form action=""> 
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="lista_pedido"></tbody>
+
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td id="total_factura">0</td> 
+                    </tr>
+                </tfoot>
+            </table>
+            <label for="">Nombre:</label>
+            <input type="text" name="cliente" placeholder="Ingrese su nombre" required>
+            <label for="">Direccion:</label>
+            <input type="text" name="direccion" placeholder="Ingrese su direccion" required>
+            <label for="">Telefono:</label>
+            <input type="text" name="telefono" placeholder="Ingrese su telefono" required>
+            <button>Guardar</button>
+        </form>
+    </aside>
+    <main>
+       
+        <section id="pizza_section"></section>
+        <h2>Pizza</h2>
+        <ul>
+            <li>
+                <p>Hawaiana-</p>
+                <p>piña, jamon y queso</p>
+                <p>
+                    <select id="select_0" class="categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('Hawaiana', 0)"> Agregar</button>
+                </p>
+            </li>
+            <li>
+                <p>Carnes-</p>
+                <p>Jamon, chorizo, salchica y queso</p>
+                <p>
+                    <select id="select_1" class = "categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('Carne', 1)"> Agregar</button>
+                </p>
+            </li>
+            <li>
+                <p>Pollo con champiñones-</p>
+                <p>Pollo desmechado, champiñones y queso</p>
+                <p>
+                    <select id="select_2" class = "categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('Pollo con champiñones', 2)"> Agregar</button>
+                </p>
+            </li>
+            <li>
+                <p>Mexicana-</p>
+                <p>Carne desmechada, Maiz, Pico de gallo, Picante y queso</p>
+                <p>
+                    <select id="select_3" class="categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('Mexicana', 3)"> Agregar</button>
+                </p>
+                </list>
+            <li>
+                <p>BBQ-</p>
+                <p>Pollo parrillado, tocineta, salsa BBQ y queso</p>
+                <p>
+                    <select id="select_4" class="categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('BBQ', 4)"> Agregar</button>
+                </p>
+                
+            </li>
+            <li>
+                <p>Carbon y Nieve-</p>
+                <p>Salami, jamon, pollo desmechado, carne desmechada y queso</p>
+                <p>
+                    <select id="select_5" class="categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('Carbon y nieve', 5)"> Agregar</button>
+                </p>
+            </li>
+            <li>
+                <p>Queso con bocadillo-</p>
+                <p>
+                    <select id="select_5" class="categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('Queso y Bocadillo', 5)"> Agregar</button>
+                </p>
+            </li>
+            <li>
+                <p>Choco pizza-</p>
+                <p>Nutella, Fresas, Chocoloate y queso</p>
+                <p>
+                    <select id="select_6" class="categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('Choco Pizza', 6)"> Agregar</button>
+                </p>
+            </li>
+            <li>
+                <p>Tentacion-</p>
+                <p>Crema de chocoloate, masmelos, y cerezas</p>
+                <p>
+                    <select id="select_7" class="categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('Tentacion', 7)"> Agregar</button>
+                </p>
+            </li>
+            <li>
+                <p>Margarita-</p>
+                <p>Queso y Tomate</p>
+                <p>
+                    <select id="select_8" class="categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('Margarita', 8)"> Agregar</button>
+                </p>
+            </li>
+            <li>
+                <p> Vegetariana-</p>
+                <p>Champiñones, Maiz, Cebolla, Pimenton y Queso</p>
+                <p>
+                    <select id="select_9" class="categoriaPizza">
+                        <option value="">--Escoja el tamaño--</option>
+                        <option value="personal">Personal</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                    <button onclick="establecerPorcion('Vegetariana', 9)"> Agregar</button>
+                </p>
+                <table>
+                    <tr>
+                        <th>Personal</th>
+                        <th>Mediana</th>
+                        <th>Familiar</th>
+                    </tr>
+                    <tr>
+                        <td>$8.000</td>
+                        <td>$22.000</td>
+                        <td>$30.000</td>
+                    </tr>
+                </table>
+                <table id="pizza_size">
+                    <tr>
+                        <th class="porciones"> 4 Porciones</th>
+                        <th class="porciones"> 6 Porciones</th>
+                        <th class="porciones"> 8 Porciones</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img id="pizza4" src="..\imagenes\circulo1.png" alt="pizza 4 porciones">
+                        </td>
+                        <td> <img id="pizza6" src="..\imagenes\circulo2.png" alt="pizza 6 porciones">
+                        </td>
+                        <td>
+                            <img id="pizza8" src="..\imagenes\circulo3.png" alt="pizza 8 porciones">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>personal</td>
+                        <td>mediana</td>
+                        <td>familiar</td>
+                    </tr>
+                </table>
+                
+            </li>
+            <div class="separador"></div>
+            <h3>-Menu Infantil-</h3>
+            <li>
+                <p>mini hamburguesa</p>
+                <p>pan,lechuga,queso,salsas, mini porcion de papa a la francesa, jugo de cajita y gomitas</p>
+                <table>
+                    <tr>
+                        <td>
+                           <button onclick="agregarProducto('mini hamburguesa',9500)"> $9.500</button>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>mini perro caliente</p>
+                <p>pan,salchicha,queso rallado,papa fosforito y salsas,
+                    mini porcion de papa a la francesa, jugo de cajita y gomitas</p>
+                <table>
+                    <tr>
+                        <td>
+                            <button onclick="agregarProducto('mini perro caliente',9500)"> $9.500</button>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>5 nuggets de pollo</p>
+                <p>mini porcion de papa a la fracesa, jugo de cajita y gomitas</p>
+                <table>
+                    <tr>
+                        <td>
+                            <button onclick="agregarProducto('nuggets de pollo',9500)"> $9.500</button>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+
+        </ul>
+        <h2>carbon</h2>
+        <h3>-hamburguesas de res o pollo apanado-</h3>
+        <table>
+            <tr>
+                <th>
+                    -en combo papa a a francesa y gaseosa-
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    + $4.500
+                </td>
+            </tr>
+        </table>
+        <ul>
+            <li>
+                <p>clasica-</p>
+                <p>pan,carne,queso doble crema,cebolla grille,tomate,lechuga y salsas</p>
+                <p>
+                    <select id="selectH_0" class="categoriaHamburguesa">
+                        <option value="">--Escoja su opcion--</option>
+                        <option value="carnes">carne sencilla</option>
+                        <option value="pollo">pollo sencilla</option>
+                        <option value="carneCombo">carne en combo</option>
+                        <option value="polloCombo">pollo en combo</option>
+                    </select>
+                    <button onclick="establecerHamburguesa('clasica', 0)"> Agregar</button>
+                </p>
+                <table>
+                    <tr>
+                        <th>carne</th>
+                        <th>-</th>
+                        <th>pollo</th>
+                    </tr>
+                    <tr>
+                        <td>$6.500</td>
+                        <td>-</td>
+                        <td>$7.400</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>hawaiana-</p>
+                <p>pan,carne,queso doble crema,jamon,piña y lechuga</p>
+                <p>
+                    <select id="selectH_1" class="categoriaHamburguesa">
+                        <option value="">--Escoja su opcion--</option>
+                        <option value="carnes">carne sencilla</option>
+                        <option value="pollo">pollo sencilla</option>
+                        <option value="carneCombo">carne en combo</option>
+                        <option value="polloCombo">pollo en combo</option>
+                    </select>
+                    <button onclick="establecerHamburguesa('hawaiana', 1)"> Agregar</button>
+                </p>
+                <table>
+                    <tr>
+                        <th>carne</th>
+                        <th>-</th>
+                        <th>pollo</th>
+                    </tr>
+                    <tr>
+                        <td>$7.500</td>
+                        <td>-</td>
+                        <td>$8.400</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>mexicana-</p>
+                <p>pan,carne,queso doble crema, carne desmechada, pico de gallo, lechuga, picante al gusto y salsas</p>
+                <p>
+                    <select id="selectH_2" class="categoriaHamburguesa">
+                        <option value="">--Escoja su opcion--</option>
+                        <option value="carnes">carne sencilla</option>
+                        <option value="pollo">pollo sencilla</option>
+                        <option value="carneCombo">carne en combo</option>
+                        <option value="polloCombo">pollo en combo</option>
+                    </select>
+                    <button onclick="establecerHamburguesa('mexicana', 2)"> Agregar</button>
+                </p>
+                <table>
+                    <tr>
+                        <th>carne</th>
+                        <th>-</th>
+                        <th>pollo</th>
+                    </tr>
+                    <tr>
+                        <td>$8.500</td>
+                        <td>-</td>
+                        <td>$9.400</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>criolla- </p>
+                <p>pan,carne,queso doble crema,huevo frito, salsa criolla, lechuga y salsas</p>
+                <p>
+                    <select id="selectH_3" class="categoriaHamburguesa">
+                        <option value="">--Escoja su opcion--</option>
+                        <option value="carnes">carne sencilla</option>
+                        <option value="pollo">pollo sencilla</option>
+                        <option value="carneCombo">carne en combo</option>
+                        <option value="polloCombo">pollo en combo</option>
+                    </select>
+                    <button onclick="establecerHamburguesa('criolla', 3)"> Agregar</button>
+                </p>
+                <table>
+                    <tr>
+                        <th>carne</th>
+                        <th>-</th>
+                        <th>pollo</th>
+                    </tr>
+                    <tr>
+                        <td>$8.000</td>
+                        <td>-</td>
+                        <td>$8.900</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>mixta-</p>
+                <p>pan,carne de res, pollo apanado, queso doble crema, cebolla grille, tomate, lechuga y salsas</p>
+                
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('mixta sencilla',9800)"> $9.800</button></td>
+                        <td><button onclick="agregarProducto('mixta combo',14300)"> $14.300</button></td>
+                    </tr>
+                </table>
+
+            </li>
+            <li>
+                <p>carbon y nieve-</p>
+                <p>pan,carne de res, pollo apanado, queso doble crema, cebolla grille, tomate y slasas</p>
+                <p>
+                    <select id="selectH_4" class="categoriaHamburguesa">
+                        <option value="">--Escoja su opcion--</option>
+                        <option value="carnes">carne sencilla</option>
+                        <option value="pollo">pollo sencilla</option>
+                        <option value="carneCombo">carne en combo</option>
+                        <option value="polloCombo">pollo en combo</option>
+                    </select>
+                    <button onclick="establecerHamburguesa('carbon y nieve', 4)"> Agregar</button>
+                </p>
+                <table>
+                    <tr>
+                        <th>carne</th>
+                        <th>-</th>
+                        <th>pollo</th>
+                    </tr>
+                    <tr>
+                        <td>$11.500</td>
+                        <td>-</td>
+                        <td>$13.000</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>callejera-</p>
+                <p>pan,carne,queso doble crema, tocineta, papas fosforito, cebolla grille, lechuga y salsas </p>
+                <p>
+                    <select id="selectH_5" class="categoriaHamburguesa">
+                        <option value="">--Escoja su opcion--</option>
+                        <option value="carnes">carne sencilla</option>
+                        <option value="pollo">pollo sencilla</option>
+                        <option value="carneCombo">carne en combo</option>
+                        <option value="polloCombo">pollo en combo</option>
+                    </select>
+                    <button onclick="establecerHamburguesa('callejera', 5)"> Agregar</button>
+                </p>
+                <table>
+                    <tr>
+                        <th>carne</th>
+                        <th>-</th>
+                        <th>pollo</th>
+                    </tr>
+                    <tr>
+                        <td>$8.000</td>
+                        <td>-</td>
+                        <td>$8.900</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>argentina-</p>
+                <p>pan,carne,queso doble crema, chorizo,chimichurri,lechuga y slasas</p>
+                <p>
+                    <select id="selectH_6" class="categoriaHamburguesa">
+                        <option value="">--Escoja su opcion--</option>
+                        <option value="carnes">carne sencilla</option>
+                        <option value="pollo">pollo sencilla</option>
+                        <option value="carneCombo">carne en combo</option>
+                        <option value="polloCombo">pollo en combo</option>
+                    </select>
+                    <button onclick="establecerHamburguesa('argentina', 6)"> Agregar</button>
+                </p>
+                <table>
+                    <tr>
+                        <th>carne</th>
+                        <th>-</th>
+                        <th>pollo</th>
+                    </tr>
+                    <tr>
+                        <td>$8.500</td>
+                        <td>-</td>
+                        <td>$9.400</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>max queso-</p>
+                <p>pan,carne,queso doble crema, queso mozzarella, queso chedar, aros de cebolla apanados, lechuga salsas
+                </p>
+                <p>
+                    <select id="selectH_7" class="categoriaHamburguesa">
+                        <option value="">--Escoja su opcion--</option>
+                        <option value="carnes">carne sencilla</option>
+                        <option value="pollo">pollo sencilla</option>
+                        <option value="carneCombo">carne en combo</option>
+                        <option value="polloCombo">pollo en combo</option>
+                    </select>
+                    <button onclick="establecerHamburguesa('carne sencilla', 7)"> Agregar</button>
+                </p>
+                <table>
+                    <tr>
+                        <th>carne</th>
+                        <th>-</th>
+                        <th>pollo</th>
+                    </tr>
+                    <tr>
+                        <td>$8.700</td>
+                        <td>-</td>
+                        <td>$9.600</td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <div class="separador"></div>
+        <h3>-perros calientes-</h3>
+        <table>
+            <tr>
+                <th>-en combo papa a la francesa y gaseosa-</th>
+            </tr>
+            <tr>
+                <td>+$4.500</td>
+            </tr>
+        </table>
+        <ul>
+            <li>
+                <p>clasico-</p>
+                <p>pan,salchicha,cebolla grille, queso rallado, papa fosforito y salsas</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('perro clasico sencillo',5300)"> $5.300</button></td>
+                        <td><button onclick="agregarProducto('perro clasico combo',9800)"> $9.800</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>super perro-</p>
+                <p>pan,salchicha,cebolla grille, queso rallado, papa fosforito, huevo de codorniz y salsas </p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('super perro sencillo',7500)"> $7.500</button></td>
+                        <td><button onclick="agregarProducto('super perro combo',12000)"> $12.000</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>carbon y nieve-</p>
+                <p>pan, salchicha americana, pollo desmechado en salsa de champiñones, queso rallado, papa fosforito,
+                    huevo de codorniz y salsas </p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('perro carbon y nieve sencillo',11500)"> $11.500</button></td>
+                        <td><button onclick="agregarProducto('perro carbon y nieve combo',16000)"> $16.000</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>chori-perro-</p>
+                <p>pan,chorizo,cebolla grille,queso rallado,papa fosforito,huevo de codorniz y salsas</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('chori perro sencillo',8000)"> $8.000</button></td>
+                        <td><button onclick="agregarProducto('chori perro combo',12500)"> $12.500</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>perro callejero-</p>
+                <p>pan,salchicha americana,tocineta,cebolla grille,queso rallado, papa fosforito, huevo de codorniz y
+                    salsas</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('perro callejero sencillo',9000)"> $9.000</button></td>
+                        <td><button onclick="agregarProducto('perro callejero combo',13500)"> $13.500</button></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <div class="separador"></div>
+        <h3>-sandwich-</h3>
+        <table>
+            <tr>
+                <th>-en combo papa a la francesa y gaseosa-</th>
+            </tr>
+            <tr>
+                <td>+ $4.500</td>
+            </tr>
+        </table>
+        <ul>
+            <li>
+                <p>sandwich de carne-</p>
+                <p>pan artesanal, carne desmechada en salsa criolla, queso doble crema y lechuga</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('sandwich de carne sencillo',8500)"> $8.500</button></td>
+                        <td><button onclick="agregarProducto('sandwich de carne combo',13000)"> $13.000</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>sandwich de pollo-</p>
+                <p>pan artesanal, pollo desmechada en salsa criolla, queso doble crema y lechuga</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('sandwich de pollo sencillo',8500)"> $8.500</button></td>
+                        <td><button onclick="agregarProducto('sandwich de pollo combo',13000)"> $13.000</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>sandwich mixto-</p>
+                <p>pan artesanal, carme y pollo desmechado en salsa criolla, queso doble crema y lechuga</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('sandwich mixto sencillo',8500)"> $8.500</button></td>
+                        <td><button onclick="agregarProducto('sandwich mixto combo',13000)"> $13.000</button></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <div class="separador"></div>
+        <h3>-mazorcada-</h3>
+        <ul>
+            <li>
+                <p>mazorcada</p>
+                <p>maíz tierno, pollo desmechado, carne desmechada, chorizo, salchicha americana, queso, papa fosforito,
+                    salsas, huevo de codorniz.</p>
+                <table>
+                    <tr>
+                       <td><button onclick="agregarProducto('mazorcada',14300)"> $14.300</button></td> 
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <div class="separador"></div>
+        <h3>-Salchi-Papas-</h3>
+        <ul>
+            
+            <li>
+                <p>Sencilla-</p>
+                <p>salchicha, papa francesa, queso y salsa rosada</p>
+                <table>
+                    <tr>
+                        <td>
+                            <button onclick="agregarProducto('salchipapa sencilla',5500)"> $5.500</button>
+                        </td>
+                    </tr>
+                </table>
+
+            </li>
+            <li>
+                <p>Chori-papa-</p>
+                <p>chorizo, papa francesa, queso y salsa rosada</p>
+                <table>
+                    <tr>
+                        <td> <button onclick="agregarProducto('chori papa',8000)"> $8.000</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>salchi-papa carbon y nieve</p>
+                <p>salchicha americana, papa a la francea, chorizo, maiz tierno, champiÃƒÂ±on, queso y huevo de codorniz</p>
+                <table>
+                    <tr>
+                        <td> <button onclick="agregarProducto('salchipapa carbon y nieve',13500)"> $13.500</button></td>
+                    </tr>
+                </table>
+            </li>
+
+        </ul>
+        <div class= "separador"></div>
+        <h3>-crepes-</h3>
+        <ul>
+            <li>
+                  <p>clasico-</p>
+                  <p>tortilla, jamon, queso y salsa rosada</p>
+                  <table>
+                      <tr>
+                          <td> <button onclick="agregarProducto('crepe clasico',5500)"> $5.500</button></td>
+                      </tr>
+                  </table>
+            </li>
+            <li>
+                <p>de pollo-</p>
+                <p>tortilla, pollo desmechado en salsa de champiÃƒÂ±ones, queso, salsa tartara</p>
+                <table>
+                    <tr>
+                        <td> <button onclick="agregarProducto('crepe de pollo',8000)"> $8.000</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>de carne-</p>
+                <p>tortilla, carne desmechada en salsa criolla, queso, salsa bbq</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('crepe de carne',8000)"> $8.000</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>mexicano</p>
+                <p>tortilla, carne desmechada, pollo desmechado, maiz tierno, pico de gallo, queso rallado, picante al gusto, salsa bbq</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('crepe mexicano',9000)"> $9.000</button></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <div class="separador"></div>
+        <h3>-arepas rellenas-</h3>
+        <ul>
+            <li>
+                <p>ranchera-</p>
+                <p>arepa, jamon, salchicha, chorizo, maiz tierno, queso, huevo de codorniz, salsa rozada</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('arepa ranchera',7800)"> $7.8000</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>mixta-</p>
+                <p>arepa,carne desmechada, pollo desmechado, salsa criolla, queso, huevo de codorniz</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('arepa mixta',7800)"> $7.8000</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>de pollo-</p>
+                <p>arepa, pollo desmechado, salsa criolla, queso, huevo de codorniz</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('arepa de pollo',7800)"> $7.8000</button></td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <p>de carne-</p>
+                <p>arepa, carnde desmechada, salsa criolla, queso, huevo de codorniz</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('arepa de carne',7800)"> $7.8000</button></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <div class="separador"></div>
+        <h3>-patacon-</h3>
+         <ul>
+             <li>
+                 <p>patacon-</p>
+                 <p>patacon, carne desmechada, pollo dessmechado, salsa criolla, queso y salsa bbq</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('patacon',9500)"> $9.500</button></td>
+                    </tr>
+                 </table>
+             </li>
+         </ul>
+         <div class = "separador"></div>
+         <h3>-parrilla</h3>
+         <ul>
+             <li>
+                 <p>carne-</p>
+                 <p>carne de res, papaa la francesa y ensalada</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('parrillada carne',9500)"> $9.500</button></td>
+
+                     </tr>
+                </table>
+             </li>
+             <li>
+                 <p>pechuga-</p>
+                 <p>pechuga, papa a la francesa y ensalada</p>
+                 <table>
+                     <tr>
+                    <td><button onclick="agregarProducto('parrillada pechuga',10000)"> $10.000</button></td>
+               </tr>
+            </table>
+                 
+             </li>
+             <li>
+                 <p>pechuga gratinada-</p>
+                 <p>pechuga gratinada, papa a la francesa y ensalada</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('pechuga gratinada',12000)"> $12.000</button></td>
+                     </tr>
+                 </table>
+             </li>
+             <li>
+                 <p>pechuga con salsa de champiñones-</p>
+                 <p>pechuga con salsa de champiñones, papas a la francesa y ensalada</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('pechuga en salsa de champiñones',11500)"> $11.500</button></td>
+                     </tr>
+                 </table>
+             </li>
+             <li>
+                 <p>cerdo-</p>
+                 <p>carnde de cerdo, papas a la francesa y ensalada</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('parrillada cerdo',9500)"> $9.500</button></td>
+                     </tr>
+                 </table>
+             </li>
+             <li>
+                 <p> cerdo bbq-</p>
+                 <p>carne de cerdo con salsa bbq, papas a la francesa y ensalada</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('parrillada cerdo bbq',10000)"> $10.000</button></td>
+                     </tr>
+                 </table>
+             </li>
+             <li>
+                 <p>costillas bbq-</p>
+                 <p>costillas de cerdo en salsa bbq, papas a la francesa y ensalada</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('costillas bbq',14500)"> $14.500</button></td>
+                     </tr>
+                 </table>
+             </li>
+         </ul>
+         <h2>nieve</h2>
+         <h3>-ensaladas de frutas-</h3>
+         <ul>
+             <li>
+                 <p>Sencilla-</p>
+                  <p>papaya, mango, banano, queso rallado, manzana, uva, helado y crema de leche</p>
+                  <table>
+                      <tr>
+                          <td><button onclick="agregarProducto('ensalada de frutas sencilla',5800)"> $5.800</button></td>
+                      </tr>
+                  </table>
+             </li>
+             <li>
+                 <p>especial-</p>
+                 <p>papaya, mango, banano, queso rallado, manzana, uva,fresa, durazno, barquillo, helado y crema de leche</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('ensalada de frutas especial',7500)"> $7.500</button></td>
+                     </tr>
+                 </table>
+             </li>
+             <li>
+                 <p>carbon y nieve-</p>
+                 <p>papaya, mango, banano, queso rallado, manzana, uva,fresa, durazno, kiwi, 2 bolas de helado, cereza, barquillo y crema de leche</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('ensalada de frutas carbon y nieve',9500)"> $9.500</button></td>
+                     </tr>
+                 </table>
+             </li>
+
+         </ul>
+         <div class="separador"></div>
+         <h3>-copas de helado-</h3>
+         <ul>
+             <li>
+                 <p>sencilla-</p>
+                 <p>tres bolas de helado, crema chantilly,cereza,barquillo</p>
+                <table>
+                    <tr>
+                        <td><button onclick="agregarProducto('helado sencillo',5000)"> $5.000</button></td>
+                    </tr>
+                </table>
+             </li>
+             <li>
+                 <p>tropical-</p>
+                 <p>banano, fresa, piña, 2 bolas de helado, crema chantilly, cereza</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('helado tropical',6000)"> $6.000</button></td>
+                     </tr>
+                 </table>
+             </li>
+             <li>
+                 <p>gomela-</p>
+                 <p>masmelos, 2 bolas de helado, gomitas, crema chantilly y cereza</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('helado gomela',6000)"> $6.000</button></td>
+                     </tr>
+                 </table>
+             </li>
+             <li>
+                 <p>brownie con helado-</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('brownie con helado',6000)"> $6.000</button></td>
+                     </tr>
+                 </table>
+             </li>
+             <li>
+                 <p>banana split-</p>
+                 <p>banano,3 bolas de helado, crema chantilly, cereza, salsa de chocolate, barquillo</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('banana split',6000)"> $6.000</button></td>
+                     </tr>
+                 </table>
+             </li>
+
+         </ul>
+         <div class="separador"></div>
+         <h3>-crepes dulces-</h3>
+         <ul>
+             <li>
+                 <p>crepes black-</p>
+                 <p>nutella, fresa, banano, helado, salsa de chocolate, crema chantilly y cereza</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('crepe black',6800)"> $6.800</button></td>
+                     </tr>
+                 </table>
+             </li>
+             <li>
+                 <p>crepes white-</p>
+                 <p>arequipe, fresa, banano, helado, salsa de arequipo, crema chantilly y cereza</p>
+                 <table>
+                     <tr>
+                         <td><button onclick="agregarProducto('crepe white',6800)"> $6.800</button></td>
+                     </tr>
+                 </table>
+             </li>
+         </ul>
+         <div class="separador"></div>
+         <h3>-jugos naturales-</h3>
+         <p>fresa-mora-maracuya-guanabana-lulo</p>
+         <p>
+            <select id="selectJ" class="categoriaPizza">
+                <option value="">--Escoja su opcion--</option>
+                <option value="fresa">fresa</option>
+                <option value="mora">mora</option>
+                <option value="maracuya">maracuya</option>
+                <option value="guanabana">guanabana</option>
+                <option value="lulo">lulo</option>
+            </select>
+            <button onclick="establecerJugo('agua', 3500)">En Agua</button>
+            <button onclick="establecerJugo('leche', 4000)">En Leche</button>
+        </p>
+         <table>
+             <tr>
+                 <td>EN AGUA: $3.500 - EN LECHE: $4.000</td>
+             </tr>
+         </table>
+         <p>malteadas</p>
+         <table>
+             <tr>
+                 <td><button onclick="agregarProducto('malteada',7000)"> $7.000</button></td>
+             </tr>
+         </table>
+    </main>
+    
+</body>
